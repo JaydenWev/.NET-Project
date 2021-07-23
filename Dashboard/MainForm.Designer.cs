@@ -1,7 +1,7 @@
 ﻿
 namespace Dashboard
 {
-    partial class Form1
+    partial class MainForm
     {
         /// <summary>
         ///  Required designer variable.
@@ -29,7 +29,7 @@ namespace Dashboard
         /// </summary>
         private void InitializeComponent()
         {
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.navigationPanel = new System.Windows.Forms.Panel();
             this.PnlNav = new System.Windows.Forms.Panel();
             this.settingsBtn = new System.Windows.Forms.Button();
             this.contactBtn = new System.Windows.Forms.Button();
@@ -46,26 +46,26 @@ namespace Dashboard
             this.maximizeBtn = new System.Windows.Forms.Button();
             this.minimizeBtn = new System.Windows.Forms.Button();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel1.SuspendLayout();
+            this.navigationPanel.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // navigationPanel
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
-            this.panel1.Controls.Add(this.PnlNav);
-            this.panel1.Controls.Add(this.settingsBtn);
-            this.panel1.Controls.Add(this.contactBtn);
-            this.panel1.Controls.Add(this.calenderBtn);
-            this.panel1.Controls.Add(this.analyticsBtn);
-            this.panel1.Controls.Add(this.dashboardBtn);
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(220, 577);
-            this.panel1.TabIndex = 0;
+            this.navigationPanel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(15)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
+            this.navigationPanel.Controls.Add(this.PnlNav);
+            this.navigationPanel.Controls.Add(this.settingsBtn);
+            this.navigationPanel.Controls.Add(this.contactBtn);
+            this.navigationPanel.Controls.Add(this.calenderBtn);
+            this.navigationPanel.Controls.Add(this.analyticsBtn);
+            this.navigationPanel.Controls.Add(this.dashboardBtn);
+            this.navigationPanel.Controls.Add(this.panel2);
+            this.navigationPanel.Dock = System.Windows.Forms.DockStyle.Left;
+            this.navigationPanel.Location = new System.Drawing.Point(0, 0);
+            this.navigationPanel.Name = "navigationPanel";
+            this.navigationPanel.Size = new System.Drawing.Size(220, 577);
+            this.navigationPanel.TabIndex = 0;
             // 
             // PnlNav
             // 
@@ -221,7 +221,6 @@ namespace Dashboard
             this.userLabel.TabIndex = 1;
             this.userLabel.Text = "User Name";
             this.userLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.userLabel.Click += new System.EventHandler(this.userLbl_Click);
             // 
             // closeBtn
             // 
@@ -279,7 +278,7 @@ namespace Dashboard
             this.panel3.MouseMove += new System.Windows.Forms.MouseEventHandler(this.mouseMove_Event);
             this.panel3.MouseUp += new System.Windows.Forms.MouseEventHandler(this.mouseUp_Event);
             // 
-            // Form1
+            // MainForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(24)))), ((int)(((byte)(5)))), ((int)(((byte)(5)))));
@@ -288,14 +287,13 @@ namespace Dashboard
             this.Controls.Add(this.maximizeBtn);
             this.Controls.Add(this.minimizeBtn);
             this.Controls.Add(this.panel3);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.navigationPanel);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "Form1";
+            this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.panel1.ResumeLayout(false);
+            this.Text = "MainForm";
+            this.navigationPanel.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
@@ -305,7 +303,7 @@ namespace Dashboard
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel navigationPanel;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Panel PnlNav;
         private System.Windows.Forms.Button dashboardBtn;
