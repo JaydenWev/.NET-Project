@@ -17,8 +17,6 @@ namespace Dashboard
         private const int cCaption = 32;
         bool mouseDown; // Drag window
         private Point offset;
-        private Form activeForm; // Switch forms
-        private Button currentButton;
 
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")] // Round corners
 
@@ -62,57 +60,12 @@ namespace Dashboard
             InitializeComponent();
             // Make window resizable
             this.SetStyle(ControlStyles.ResizeRedraw, true);
-            
+
             // Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));// Round corners
 
             // Set navigation line to start window
             PnlNav.Left = dashboardBtn.Left;
             navi_Click(dashboardBtn);
-        }
-
-        // Switch active forms
-        private void OpenChildForm(Form childForm, object btnSender)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-            ActivateButton(btnSender);
-            activeForm = childForm;
-            childForm.TopLevel = false;
-            childForm.FormBorderStyle = FormBorderStyle.None;
-            childForm.Dock = DockStyle.Fill;
-            this.formPanel.Controls.Add(childForm);
-            this.formPanel.Tag = childForm;
-            childForm.BringToFront();
-            childForm.Show();
-        }
-
-        private void ActivateButton(object btnSender)
-        {
-            if (btnSender != null)
-            {
-                if (currentButton != (Button)btnSender)
-                {
-                    DisableButton();
-                    currentButton = (Button)btnSender;
-                    currentButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    //ThemeColor.PrimaryColor = color;
-                    //ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.3);
-                    //btnCloseChildForm.Visible = true;
-                }
-            }
-        }
-
-        private void DisableButton()
-        {
-            foreach (Control previousBtn in navigationPanel.Controls)
-            {
-                if (previousBtn.GetType() == typeof(Button))
-                {
-                    previousBtn.BackColor = Color.FromArgb(51, 51, 76);
-                    previousBtn.ForeColor = Color.Gainsboro;
-                    previousBtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                }
-            }
         }
 
         // Navigation buttons
