@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Runtime.InteropServices;
 
 namespace Dashboard
 {
@@ -17,10 +16,6 @@ namespace Dashboard
         private const int cCaption = 32;
         bool mouseDown; // Drag window
         private Point offset;
-
-        [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")] // Round corners
-
-        private static extern IntPtr CreateRoundRectRgn(int nLeftRect, int nTopRect, int nRightRect, int nBottomRect, int nWidtEllipse, int nHeightEllipse);
 
         protected override void WndProc(ref Message m) // Make window resizable
         {
@@ -43,6 +38,18 @@ namespace Dashboard
             base.WndProc(ref m);
         }
 
+        public MainForm() // Constuctor
+        {
+            InitializeComponent();
+            // Make window resizable
+            this.SetStyle(ControlStyles.ResizeRedraw, true);
+
+            // Set navigation line to start window
+            PnlNav.Left = dashboardBtn.Left;
+            navi_Click(dashboardBtn);
+        }
+
+        // Navigation button functions
         private void navi_Click(Button btn)
         {
             PnlNav.Height = btn.Height;
@@ -55,20 +62,6 @@ namespace Dashboard
             btn.BackColor = Color.FromArgb(15, 5, 5);
         }
 
-        public MainForm() // Constuctor
-        {
-            InitializeComponent();
-            // Make window resizable
-            this.SetStyle(ControlStyles.ResizeRedraw, true);
-
-            // Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));// Round corners
-
-            // Set navigation line to start window
-            PnlNav.Left = dashboardBtn.Left;
-            navi_Click(dashboardBtn);
-        }
-
-        // Navigation buttons
         private void dashboardBtn_Click(object sender, EventArgs e)
         {
             navi_Click(dashboardBtn);
